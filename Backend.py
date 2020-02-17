@@ -38,13 +38,17 @@ def gekleurde_pincode_input():
 
 
 
-def lst_combinatie_genereren(lst):
+def lst_combinatie_genereren():
     'Alle mogelijke combinatie berkenen en in een set toevoegen'
-    alle_combinnatie= []
-    comb = combinations(lst, 4)
-    for i in comb:
-        alle_combinnatie.append(i)
-    return alle_combinnatie
+    lijst_letters = ['A', 'B', 'C', 'D', 'E', 'F']
+    alle_combinatie= []
+    for i in lijst_letters:
+        for j in lijst_letters:
+            for h in lijst_letters:
+                for g in lijst_letters:
+                    alle_combinatie.append([i,j,h,g])
+    return alle_combinatie
+
 
 
 def pincodes_vergelijken(p1, p2):
@@ -80,12 +84,26 @@ def lijst_schrappen(gok, z_w_feedback,lijst_alle_combinatie):
     for combinatie in lijst_alle_combinatie:
         feedback_comb_gok = pincodes_vergelijken(gok, combinatie)
 
-        if feedback_comb_gok == z_w_feedback:
+        if feedback_comb_gok != z_w_feedback:
             lijst_alle_combinatie.remove(combinatie)
         else:
             continue
     return  lijst_alle_combinatie
 
+def gok_checken(gok, secret_code, lijst_alle_combinatie, ):
+    alle_z_w_feedback_lst = []
+
+    while True:
+        #gok = random.choice(lijst_alle_combinatie)  # returns een random combinatie uit de lijst
+        z_w_feedback = pincodes_vergelijken(secret_code,gok)  # vergelijk pincodes met elkaar -> output aantal zwart en wit
+
+        if z_w_feedback in alle_z_w_feedback_lst:
+            continue
+        else:
+            alle_z_w_feedback_lst.append(z_w_feedback)
+            break
+
+    return gok, z_w_feedback
 
 
 
@@ -96,9 +114,7 @@ def lijst_schrappen(gok, z_w_feedback,lijst_alle_combinatie):
 
 
 
-
-
-
+# Bron - Marya
 
 
 

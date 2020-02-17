@@ -1,4 +1,4 @@
-from Backend import gekleurde_pincode_input, gekleurde_pincode_genereren, lst_combinatie_genereren, pincodes_vergelijken,lijst_schrappen
+from Backend import gekleurde_pincode_input, gekleurde_pincode_genereren, lst_combinatie_genereren, pincodes_vergelijken,lijst_schrappen, gok_checken
 import random
 
 lijst_letters = ['A', 'B', 'C', 'D', 'E', 'F']
@@ -23,34 +23,32 @@ def spel_men_tegen_computer():
 
 def spel_computer_tegen_men():
     lijst_letters = ['A', 'B', 'C', 'D', 'E', 'F']
-    alle_z_w_feedback_lst = []
+
 
 
     secret_code = gekleurde_pincode_input()  # secret pincode van de speler
-    lijst_alle_combinatie = lst_combinatie_genereren(lijst_letters)
+    lijst_alle_combinatie = lst_combinatie_genereren()
 
     i=0
     while i <=10:
-
-        gok = random.choice(lijst_alle_combinatie)  # returns een random combinatie uit de lijst
-        z_w_feedback = pincodes_vergelijken(secret_code,gok)  # vergelijk pincodes met elkaar -> output aantal zwart en wit
+        if i == 0:
+            gok = ['A','A','B','C']
+        else:
+            gok= random.choice(lijst_alle_combinatie)
+        gok, z_w_feedback = gok_checken(gok,secret_code,lijst_alle_combinatie)
 
         print(gok, z_w_feedback)
 #TODO else: moet een andere gok generen en zich herhaleln
-        if z_w_feedback not in alle_z_w_feedback_lst:
-            alle_z_w_feedback_lst.append(z_w_feedback)
-            if z_w_feedback == (4, 0):
+        if z_w_feedback == (4, 0):
                 return ('win')
-            else:
-                lijst_alle_combinatie = lijst_schrappen(gok, z_w_feedback, lijst_alle_combinatie)
-                i += 1
         else:
+            lijst_alle_combinatie = lijst_schrappen(gok, z_w_feedback, lijst_alle_combinatie)
+            i += 1
             continue
-
-
-    return('lose')
+    return ('lose')
 
 
 
 
+print(spel_computer_tegen_men())
 

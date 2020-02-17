@@ -1,9 +1,92 @@
-import random
-from Backend import pincodes_vergelijken, lst_combinatie_genereren
+from Backend import lst_combinatie_genereren, pincodes_vergelijken
+'''
+1.
+'''
+def f_noname1(i, combinatielijst):
+    'lijst geeft met de mogelijkheden van 1 element met alle mog combinatie'
+    lst= []
+    for j in combinatielijst:
+        noname_var = pincodes_vergelijken(i,j)
+        if noname_var == (4,0):
+            continue
+        else:
+            lst.append(noname_var)
+    return lst
+
+def categoriseren_dict(i, lst):
+    # TODO bedenk een manier om code korter te maken
+    dict = {
+        (3, 0): 0,
+        (2, 2): 0,
+        (2, 1): 0,
+        (2, 0): 0,
+        (1, 4): 0,
+        (1, 3): 0,
+        (1, 2): 0,
+        (1, 1): 0,
+        (1, 0): 0,
+        (0, 4): 0,
+        (0, 3): 0,
+        (0, 2): 0,
+        (0, 1): 0,
+        (0, 0): 0,
+    }
+
+    for j in lst[i]:
+        if j == (3, 0):
+            dict[(3, 0)] += 1
+        elif j == (2, 2):
+            dict[(2, 2)] += 1
+        elif j == (2, 1):
+            dict[(2, 1)] += 1
+        elif j == (2, 0):
+            dict[(2, 0)] += 1
+        elif j == (1, 3):
+            dict[(1, 3)] += 1
+        elif j == (1, 2):
+            dict[(1, 1)] += 1
+        elif j == (1, 0):
+            dict[(1, 0)] += 1
+        elif j == (0, 4):
+            dict[(0, 4)] += 1
+        elif j == (0, 3):
+            dict[(0, 3)] += 1
+        elif j == (0, 2):
+            dict[(0, 2)] += 1
+        elif j == (0, 1):
+            dict[(0, 1)] += 1
+        elif j == (0, 0):
+            dict[(0, 0)] += 1
+        else:
+            continue
+    return dict
 
 
-lijst_letters = ['A', 'B', 'C', 'D', 'E', 'F']
-lst = lst_combinatie_genereren(lijst_letters)
-secret_code = ['A', 'F', 'D', 'E']
-print(secret_code)
-#print(simple_strategy(secret_code, lst))
+def lijst():
+    possible_combination_feedbacks = []
+    a = lst_combinatie_genereren()
+    for i in a:
+        fb = f_noname1(i, a)
+        possible_combination_feedbacks.append(fb) # krijgt een nested list van alle feedb
+    return i, possible_combination_feedbacks
+
+
+
+def lijst_categoriseren():
+    'Elke lijst van feedbacks categoriseren '
+    dict_res= {}
+    code,possible_combination_feedbacks = lijst()
+
+    for i in code:
+        for j in possible_combination_feedbacks:
+            dct = categoriseren_dict(j,possible_combination_feedbacks)
+            dict_res[i] =dct
+
+    return dict_res
+
+
+
+a = lijst_categoriseren()
+b = lijst()
+print(a)
+print(len(b))
