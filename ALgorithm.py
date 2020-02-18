@@ -1,4 +1,4 @@
-from Backend import lst_combinatie_genereren, pincodes_vergelijken
+from Backend import lst_combinatie_genereren, pincodes_vergelijken, join_string
 '''
 1.
 '''
@@ -64,11 +64,13 @@ def categoriseren_dict(i, lst):
 
 def lijst():
     possible_combination_feedbacks = []
+    pincode = []
     a = lst_combinatie_genereren()
     for i in a:
-        fb = f_noname1(i, a)
+        fb = f_noname1(i, a) # geeft een lijst met de feedbacks van i en alle combinatie uit de lijst
         possible_combination_feedbacks.append(fb) # krijgt een nested list van alle feedb
-    return i, possible_combination_feedbacks
+        pincode.append(i)
+    return pincode, possible_combination_feedbacks
 
 
 
@@ -78,15 +80,15 @@ def lijst_categoriseren():
     code,possible_combination_feedbacks = lijst()
 
     for i in code:
-        for j in possible_combination_feedbacks:
+        for j in range(0,len(possible_combination_feedbacks)):
             dct = categoriseren_dict(j,possible_combination_feedbacks)
-            dict_res[i] =dct
+            dict_res[join_string(i)] = dct
 
     return dict_res
 
+d = lijst_categoriseren()
+print(list(d.items())[0:2])
 
 
-a = lijst_categoriseren()
-b = lijst()
-print(a)
-print(len(b))
+
+

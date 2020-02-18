@@ -106,7 +106,9 @@ def gok_checken(gok, secret_code, lijst_alle_combinatie, ):
     return gok, z_w_feedback
 
 
-
+def join_string(s):
+    str = ''
+    return str.join(s)
 
 
 

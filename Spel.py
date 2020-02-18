@@ -34,11 +34,11 @@ def spel_computer_tegen_men():
         if i == 0:
             gok = ['A','A','B','C']
         else:
-            gok= random.choice(lijst_alle_combinatie)
+            gok= random.choice(lijst_alle_combinatie) # TODO ALgoritme vabn Algoritme.py implementeren
         gok, z_w_feedback = gok_checken(gok,secret_code,lijst_alle_combinatie)
 
         print(gok, z_w_feedback)
-#TODO else: moet een andere gok generen en zich herhaleln
+
         if z_w_feedback == (4, 0):
                 return ('win')
         else:
