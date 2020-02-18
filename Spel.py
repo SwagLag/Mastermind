@@ -8,15 +8,15 @@ def spel_men_tegen_computer():
     '''
     secret_code = gekleurde_pincode_genereren()
     print(secret_code)
-    i=0
-    while i<= 10:
+    i = 0
+    while i <= 10:
         gok = gekleurde_pincode_input()
         feedb = pincodes_vergelijken(secret_code, gok)
-        if  feedb[0]==4 and feedb[1] ==0 :
+        if  feedb[0] == 4 and feedb[1] == 0:
             return('win')
         else:
             print('Wrong guess, try again: {}, {}'.format(gok, feedb))
-            i+=1
+            i += 1
     return 'lose'
 
 
@@ -29,12 +29,12 @@ def spel_computer_tegen_men():
     secret_code = gekleurde_pincode_input()  # secret pincode van de speler
     lijst_alle_combinatie = lst_combinatie_genereren()
 
-    i=0
-    while i <=10:
+    i = 0
+    while i <= 10:
         if i == 0:
             gok = ['A','A','B','C']
         else:
-            gok= random.choice(lijst_alle_combinatie) # TODO ALgoritme vabn Algoritme.py implementeren
+            gok = random.choice(lijst_alle_combinatie) # TODO ALgoritme vabn Algoritme.py implementeren
         gok, z_w_feedback = gok_checken(gok,secret_code,lijst_alle_combinatie)
 
         print(gok, z_w_feedback)
