@@ -32,32 +32,40 @@ def categoriseren_dict(i, lst):
         (0, 1): 0,
         (0, 0): 0,
     }
+    
+    # for j in lst[i]:
+    #     if j in dict:
+    #         dict[j] += 1
+    #     else:
+    #         continue
 
+    # probeer dit eens te implementeren, dat maakt die hele waslijst aan if/elif statements korter.
+    
     for j in lst[i]:
         if j == (3, 0):
-            dict[(3, 0)] += 1
+            dict[j] += 1
         elif j == (2, 2):
-            dict[(2, 2)] += 1
+            dict[j] += 1
         elif j == (2, 1):
-            dict[(2, 1)] += 1
+            dict[j] += 1
         elif j == (2, 0):
-            dict[(2, 0)] += 1
+            dict[j] += 1
         elif j == (1, 3):
-            dict[(1, 3)] += 1
+            dict[j] += 1
         elif j == (1, 2):
-            dict[(1, 1)] += 1
+            dict[j] += 1
         elif j == (1, 0):
-            dict[(1, 0)] += 1
+            dict[j] += 1
         elif j == (0, 4):
-            dict[(0, 4)] += 1
+            dict[j] += 1
         elif j == (0, 3):
-            dict[(0, 3)] += 1
+            dict[j] += 1
         elif j == (0, 2):
-            dict[(0, 2)] += 1
+            dict[j] += 1
         elif j == (0, 1):
-            dict[(0, 1)] += 1
+            dict[j] += 1
         elif j == (0, 0):
-            dict[(0, 0)] += 1
+            dict[j] += 1
         else:
             continue
     return dict
