@@ -3,8 +3,9 @@ from Backend import lst_combinatie_genereren, pincodes_vergelijken, join_string
 1.
 '''
 def f_noname1(i, combinatielijst):
-    'lijst geeft met de mogelijkheden van 1 element met alle mog combinatie'
-    lst= []
+    'lijst geeft met de mogelijkheden van 1 element met alle mog combinatie' # Onthoud; twee 's zijn goed voor een enkele regel,
+                                                                             # maar 6 "s zijn goed voor een langere beschrijving
+    lst = []
     for j in combinatielijst:
         noname_var = pincodes_vergelijken(i,j)
         if noname_var == (4,0):
@@ -67,8 +68,8 @@ def lijst():
     pincode = []
     a = lst_combinatie_genereren()
     for i in a:
-        fb = f_noname1(i, a) # geeft een lijst met de feedbacks van i en alle combinatie uit de lijst
-        possible_combination_feedbacks.append(fb) # krijgt een nested list van alle feedb
+        fb = f_noname1(i, a)  # geeft een lijst met de feedbacks van i en alle combinatie uit de lijst
+        possible_combination_feedbacks.append(fb)  # krijgt een nested list van alle feedb
         pincode.append(i)
     return pincode, possible_combination_feedbacks
 
