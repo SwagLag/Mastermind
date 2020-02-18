@@ -11,7 +11,7 @@ while True:
         3.Exit/quit
         ''')
     ans = input('Welke kies je voor? ')
-    if ans =='1':
+    if ans == '1':
         uitslag = spel_men_tegen_computer()
         if uitslag == 'win':
             print('Gefeliciteerd, je hebt gewonnen')
@@ -30,10 +30,10 @@ while True:
             break
         else:
             print('Error')
-    elif ans =='3':
+    elif ans == '3':
         break
         print('\n Goodbye')
-    elif ans !='':
+    elif ans != '':
         print('\n Not Valid Choice Try again')
 
 
